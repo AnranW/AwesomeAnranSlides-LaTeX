@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - master
 
 jobs:
   build_latex:
@@ -15,7 +16,9 @@ jobs:
       - name: LaTeX compilation
         uses: dante-ev/latex-action@2021-A
         with:
-          # working_directory: /
+          # optional: set up working directory
+          # working_directory: 
+          # set root file for latex 
           root_file: presentation_anran.tex
           compiler: latexmk
           args: -pdf -file-line-error -interaction=nonstopmode
@@ -24,7 +27,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: PDF
-          path: Slides-2025-MTACR/presentation.pdf
+          # modify name of pdf output accordingly
+          path: presentation_anran.pdf
           
       - name: Commit PDF to GitHub Pages
         run: |
@@ -32,7 +36,7 @@ jobs:
           git config --global user.email "actions@github.com"
           git checkout --orphan gh-pages
           git rm -rf .
-          cp Slides-2025-MTACR/presentation.pdf presentation.pdf
+          cp presentation_anran.pdf presentation.pdf
           git add presentation.pdf
           git commit -m "Update PDF"
           git push -f origin gh-pages
