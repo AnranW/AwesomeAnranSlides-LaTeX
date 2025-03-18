@@ -17,14 +17,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: LaTeX compilation
-        uses: dante-ev/latex-action@2021-A
+        uses: dante-ev/latex-action@latest
         with:
           # optional: set up working directory
           # working_directory: 
           # set root file for latex 
           root_file: presentation.tex
           compiler: latexmk
-          args: -pdf -file-line-error -interaction=nonstopmode
+          args: -pdf -file-line-error -interaction=nonstopmode -shell-escape
 
       - name: Upload PDF
         uses: actions/upload-artifact@v4
