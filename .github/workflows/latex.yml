@@ -15,7 +15,7 @@ jobs:
       - name: LaTeX compilation
         uses: dante-ev/latex-action@2021-A
         with:
-          working_directory: /
+          # working_directory: /
           root_file: presentation_anran.tex
           compiler: latexmk
           args: -pdf -file-line-error -interaction=nonstopmode
