@@ -19,7 +19,7 @@ jobs:
           # optional: set up working directory
           # working_directory: 
           # set root file for latex 
-          root_file: presentation_anran.tex
+          root_file: presentation.tex
           compiler: latexmk
           args: -pdf -file-line-error -interaction=nonstopmode
 
@@ -28,7 +28,7 @@ jobs:
         with:
           name: PDF
           # modify name of pdf output accordingly
-          path: presentation_anran.pdf
+          path: presentation.pdf
           
       - name: Commit PDF to GitHub Pages
         run: |
@@ -36,8 +36,8 @@ jobs:
           git config --global user.email "actions@github.com"
           git checkout --orphan gh-pages
           git rm -rf .
-          cp presentation_anran.pdf presentation.pdf
-          git add presentation.pdf
+          cp presentation_anran.pdf out.pdf
+          git add out.pdf
           git commit -m "Update PDF"
           git push -f origin gh-pages
         env:
